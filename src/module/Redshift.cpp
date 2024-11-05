@@ -29,10 +29,11 @@ void Redshift::process(Candidate *c) const {
 
 std::string Redshift::getDescription() const {
 	std::stringstream s;
-	s << "Redshift: h0 = " << hubbleRate() / 1e5 * Mpc << ", omegaL = "
-			<< omegaL() << ", omegaM = " << omegaM();
+	s << "Redshift: h0 = " << hubbleRate() / 1e5 * Mpc << ", omegaR0 = "
+			<< omegaR0() << ", omegaM = " << omegaM();
 	return s.str();
 }
+
 
 void FutureRedshift::process(Candidate *c) const {
 	double z = c->getRedshift();
@@ -54,8 +55,8 @@ void FutureRedshift::process(Candidate *c) const {
 
 std::string FutureRedshift::getDescription() const {
 	std::stringstream s;
-	s << "FutureRedshift: h0 = " << hubbleRate() / 1e5 * Mpc << ", omegaL = "
-			<< omegaL() << ", omegaM = " << omegaM();
+	s << "FutureRedshift: h0 = " << hubbleRate() / 1e5 * Mpc << ", omegaR0 = "
+			<< omegaR0() << ", omegaM = " << omegaM();
 	return s.str();
 }
 

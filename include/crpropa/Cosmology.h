@@ -13,26 +13,32 @@ namespace crpropa {
  */
 
 /**
- Set the cosmological parameters for a flat universe. To ensure flatness omegaL is set to 1 - omegaMatter
+ Set the cosmological parameters for a flat universe. To ensure flatness omegaL
+ is set to 1 - omegaMatter (f(r) does not have the omegaL parameter).
  @param hubbleParameter	dimensionless Hubble parameter, default = 0.673
  @param omegaMatter		matter parameter, default = 0.315
+ @param omegaRadiation			radiation parameter, default = 5.373*1e-5
+ @param n			model parameter, default = 1.4
  */
-void setCosmologyParameters(double hubbleParameter, double omegaMatter);
+void setCosmologyParameters(double hubbleParameter, double omegaMatter, double omegaRadiation, double n);
 
 /**
  Hubble rate at given redshift
- H(z) = H0 * sqrt(omegaM * (1 + z)^3 + omegaL)
+ H(z) = sqrt((-2 * n * R0 / (3 * pow(3 - n, 2) * omegaM)) * ( (n - 3) * omegaM *
+ pow(1 + z, 3.0 / n) + 2 * (n - 2) * omegaR * pow(1 + z, (n + 3) / n ) ))
  */
 double hubbleRate(double redshift = 0);
 
-// Returns the dark energy density parameter
-double omegaL();
+// Returns the radiation density parameter
+double omegaR0();
 
 // Returns the matter density parameter
 double omegaM();
 
 // Returns the hubble parameter
 double H0();
+
+double R0();
 
 /**
  Redshift of a comoving object at a given comoving distance to an observer at z = 0.
